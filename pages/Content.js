@@ -5,13 +5,20 @@ class Content extends React.Component {
     super(props);
   }
 
-  render() {
+  refreshTiledesk(type) {
     closeTiledesk();
-    let type = this.props.data.type || 'Default';
-    let value = this.props.data.value || 'Use side nav to open a page';
     if (type === Constants.TYPE_PRACTICE) {
       openTiledesk();
     }
+  }
+
+  componentDidUpdate() {
+    this.refreshTiledesk(this.props.data.type);
+  }
+
+  render() {
+    let type = this.props.data.type || 'Default';
+    let value = this.props.data.value || 'Use side nav to open a page';
     return (
       <div className="mainview">
         <h3> {type} </h3>

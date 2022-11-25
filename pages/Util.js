@@ -29,7 +29,14 @@ function loadTileDeskScript(doc, elemType, elemId) {
   fjs.parentNode.insertBefore(js, fjs);
 }
 
+function onServerSide() {
+  return (typeof window === "undefined");
+}
+
 export function initTiledesk() {
+  if (onServerSide()) {
+    return;
+  }
   console.log('initTiledesk');
   window.tiledeskSettings = {
     projectid: '5f7dcc8b9c9f020012441a19',
@@ -39,16 +46,25 @@ export function initTiledesk() {
 }
 
 export function openTiledesk() {
+  if (onServerSide()) {
+    return;
+  }
   console.log('openTiledesk');
   window.Tiledesk('show');
 }
 
 export function closeTiledesk() {
+  if (onServerSide()) {
+    return;
+  }
   console.log('closeTiledesk');
   window.Tiledesk('hide');
 }
 
 export function disposeTiledesk() {
+  if (onServerSide()) {
+    return;
+  }
   closeTiledesk();
   window.Tiledesk('dispose');
 }

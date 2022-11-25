@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 import SideNav from './SideNav';
 import Content from './Content';
 import { initTiledesk, disposeTiledesk } from './Util';
@@ -8,6 +7,9 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { type: null, value: null };
+  }
+
+  componentDidMount() {
     initTiledesk();
   }
 
